@@ -9,7 +9,6 @@ export const OptionsContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(2, 0),
 }));
 
-
-export const OptionButton = styled(Button)(({ theme }) => ({
+export const OptionButton = styled(Button)({
   minWidth: '120px',
-}));
+});

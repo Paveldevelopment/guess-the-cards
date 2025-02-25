@@ -1,85 +1,49 @@
-// PAV nove
-# Project
+# Guess the Cards
 
- 
+An Interactive Card Game Prototype
 
 ## Getting Started
 
-1. **Clone the repository**  
+### Prerequisites
+
+- Node.js (version 14+ recommended)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository and run the app:**
+
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone <repository-url>
+   cd guess-the-cards
+   ```
 
-   npm install
+Install dependencies: npm install
 
+Start the development server: npm run dev
 
-2. Create your .env file
-VITE_API_URL=https://api.api-ninjas.com/v1/randomword
-VITE_API_KEY=YOUR_REAL_API_KEY
+......................................................................................................
 
-Copy the provided .env.example to a new file named .env.
+## Overview
 
+**Guess the Cards** is an interactive card game where the goal is to answer correctly as many times as possible. The game challenges your ability to quickly evaluate poker hands, offering a unique twist on classic card games.
 
-3. Run the development server
-npm run dev
+## Gameplay
 
-Used Practises
-For local development, we have configured a proxy in vite.config.ts to avoid CORS issues. In production, you may need a server-side solution if the external API doesn't support CORS.
+- **Starting Time:** The player begins with 100 seconds (time acts as a life counter).
+- **Rounds:** In each round, 5 cards are dealt. After a brief delay, the cards are revealed and a countdown begins.
+- **Answering:** You are presented with three hand ranking options (e.g., Straight Flush, Four of a Kind, etc.). Choose the correct ranking of the dealt hand.
+- **Time Bonuses/Penalties:**
+  - Correct answer: +5 seconds added.
+  - Incorrect answer: -5 seconds deducted.
+- **Game End:** The game ends when your time reaches 0.
+- **Summary:** After the game, a summary screen displays your total correct answers and a list of your previous attempts.
+- **Bonus Feature:** After each round, a call is made to the [Random Word API](https://api-ninjas.com/api/randomword) to fetch a word. A funny message is then displayed (e.g., “You're so _[word]_!”), adding an extra layer of entertainment.
 
+## Technologies & Tools
 
-................
-................
-// PAV puvodni
-................
-................
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Frontend Framework:** React with TypeScript
+- **Bundler:** Vite
+- **Component Library:** Material UI
+- **Poker Hand Evaluation:** [PokerSolver](https://www.npmjs.com/package/pokersolver)
+- **Random Word API:** [API Ninjas Random Word](https://api-ninjas.com/api/randomword)

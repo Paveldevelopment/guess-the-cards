@@ -15,9 +15,9 @@ const HandOptions: React.FC<HandOptionsProps> = ({ options, onSelect }) => {
   return (
     <OptionsContainer>
       {options.map((option, index) => (
-        <OptionButton 
-          key={index} 
-          variant="contained" 
+        <OptionButton
+          key={index}
+          variant="contained"
           onClick={() => onSelect(option.value)}
         >
           {option.label}

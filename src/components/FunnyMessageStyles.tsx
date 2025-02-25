@@ -7,5 +7,5 @@ export const MessageContainer = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   borderRadius: theme.shape.borderRadius,
   width: 250,
-  height: 40 
+  height: 40,
 }));

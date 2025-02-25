@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
-import { 
-  StyledCard, 
-  StyledCardActionArea, 
-  StyledCardContent, 
-  StyledCardMedia 
+import {
+  StyledCard,
+  StyledCardActionArea,
+  StyledCardContent,
+  StyledCardMedia,
 } from './CardStyles';
 
 interface CardProps {
@@ -15,7 +15,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ rank, suit, faceUp = true, onClick }) => {
-  const suitColor = (suit === '♥' || suit === '♦') ? 'red' : 'inherit';
+  const suitColor = suit === '♥' || suit === '♦' ? 'red' : 'inherit';
 
   return (
     <StyledCard onClick={onClick}>
@@ -29,10 +29,9 @@ const Card: React.FC<CardProps> = ({ rank, suit, faceUp = true, onClick }) => {
           </StyledCardContent>
         ) : (
           <StyledCardMedia
-          component="img"
-          image="/assets/images/card-back.png"
-        />
-        
+            component="img"
+            image="/assets/images/card-back.png"
+          />
         )}
       </StyledCardActionArea>
     </StyledCard>

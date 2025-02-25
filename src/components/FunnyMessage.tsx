@@ -12,26 +12,24 @@ const funnyMessageCache: Record<number, string> = {};
 const funnyMessagePromises: Record<number, Promise<string>> = {};
 
 const FunnyMessage: React.FC<FunnyMessageProps> = ({ trigger = 0 }) => {
-  const [message, setMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
-    setMessage("");
+    setMessage('');
 
-    
     if (funnyMessageCache[trigger]) {
       setMessage(funnyMessageCache[trigger]);
       return;
     }
 
-    
     if (!funnyMessagePromises[trigger]) {
       funnyMessagePromises[trigger] = fetchRandomWord()
-        .then(word => {
+        .then((word) => {
           const msg = `You're so ${word}!`;
           funnyMessageCache[trigger] = msg;
           return msg;
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching random word:', error);
           const msg = "You're hilarious!";
           funnyMessageCache[trigger] = msg;
@@ -39,14 +37,13 @@ const FunnyMessage: React.FC<FunnyMessageProps> = ({ trigger = 0 }) => {
         });
     }
 
-    funnyMessagePromises[trigger].then(msg => {
+    funnyMessagePromises[trigger].then((msg) => {
       setMessage(msg);
     });
   }, [trigger]);
 
   return (
-    <MessageContainer
-    >
+    <MessageContainer>
       {message ? (
         <Typography variant="h6">{message}</Typography>
       ) : (

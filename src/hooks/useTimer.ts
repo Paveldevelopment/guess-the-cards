@@ -7,7 +7,7 @@ function useTimer(initialTime: number, autoStart: boolean = true) {
   const startTimer = useCallback(() => {
     if (intervalRef.current !== null) return;
     intervalRef.current = setInterval(() => {
-      setTime(prevTime => {
+      setTime((prevTime) => {
         if (prevTime <= 0) {
           clearInterval(intervalRef.current!);
           intervalRef.current = null;
@@ -25,16 +25,19 @@ function useTimer(initialTime: number, autoStart: boolean = true) {
     }
   }, []);
 
-  const resetTimer = useCallback((newTime?: number) => {
-    stopTimer();
-    setTime(newTime !== undefined ? newTime : initialTime);
-    if (autoStart) {
-      startTimer();
-    }
-  }, [initialTime, autoStart, startTimer, stopTimer]);
+  const resetTimer = useCallback(
+    (newTime?: number) => {
+      stopTimer();
+      setTime(newTime !== undefined ? newTime : initialTime);
+      if (autoStart) {
+        startTimer();
+      }
+    },
+    [initialTime, autoStart, startTimer, stopTimer],
+  );
 
   const addTime = useCallback((bonus: number) => {
-    setTime(prevTime => prevTime + bonus);
+    setTime((prevTime) => prevTime + bonus);
   }, []);
 
   useEffect(() => {
