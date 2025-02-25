@@ -1,8 +1,11 @@
 import React from 'react';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { StyledCard, StyledCardActionArea } from './CardStyles';
+import { 
+  StyledCard, 
+  StyledCardActionArea, 
+  StyledCardContent, 
+  StyledCardMedia 
+} from './CardStyles';
 
 interface CardProps {
   rank: string;
@@ -12,37 +15,24 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ rank, suit, faceUp = true, onClick }) => {
+  const suitColor = (suit === '♥' || suit === '♦') ? 'red' : 'inherit';
+
   return (
     <StyledCard onClick={onClick}>
       <StyledCardActionArea>
         {faceUp ? (
-          <CardContent
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%',
-            }}
-          >
-            <Typography variant="h5" component="div">
-              {rank}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
+          <StyledCardContent>
+            <Typography variant="h5">{rank}</Typography>
+            <Typography variant="subtitle1" sx={{ color: suitColor }}>
               {suit}
             </Typography>
-          </CardContent>
+          </StyledCardContent>
         ) : (
-          <CardMedia
-            component="img"
-            image="/assets/images/card-back.png"
-            alt="Card Back"
-            sx={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
+          <StyledCardMedia
+          component="img"
+          image="/assets/images/card-back.png"
+        />
+        
         )}
       </StyledCardActionArea>
     </StyledCard>
@@ -50,4 +40,3 @@ const Card: React.FC<CardProps> = ({ rank, suit, faceUp = true, onClick }) => {
 };
 
 export default Card;
-

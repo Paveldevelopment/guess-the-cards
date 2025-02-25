@@ -5,7 +5,7 @@ export const MessageContainer = styled(Box)(({ theme }) => ({
   margin: theme.spacing(2, 0),
   padding: theme.spacing(1),
   textAlign: 'center',
-  backgroundColor: theme.palette.info.light,
-  color: theme.palette.info.contrastText,
   borderRadius: theme.shape.borderRadius,
+  width: 250,
+  height: 40 
 }));
