@@ -16,12 +16,10 @@ const FunnyMessage: React.FC<FunnyMessageProps> = ({ trigger = 0 }) => {
 
   useEffect(() => {
     setMessage('');
-
     if (funnyMessageCache[trigger]) {
       setMessage(funnyMessageCache[trigger]);
       return;
     }
-
     if (!funnyMessagePromises[trigger]) {
       funnyMessagePromises[trigger] = fetchRandomWord()
         .then((word) => {
@@ -36,7 +34,6 @@ const FunnyMessage: React.FC<FunnyMessageProps> = ({ trigger = 0 }) => {
           return msg;
         });
     }
-
     funnyMessagePromises[trigger].then((msg) => {
       setMessage(msg);
     });

@@ -7,10 +7,10 @@ export interface CardData {
 }
 
 const suitMap: Record<string, string> = {
-  '♠': 's',
+  '♠': 's', // spade
   '♥': 'h',
   '♦': 'd',
-  '♣': 'c',
+  '♣': 'c', // club
 };
 
 function convertCard(card: CardData): string {
